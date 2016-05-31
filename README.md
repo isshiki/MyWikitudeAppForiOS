@@ -8,11 +8,11 @@ Wikitude SDK（JavaScript API）を用いたロケーションベースARのサ�
 
 ## ビルド・実行するための注意点
 
-- MyWikitudeAppForiOS\MyWikitudeAppForiOS\ViewController.m
+- /MyWikitudeAppForiOS/ViewController.m
 
 ViewController.mファイル内の`#define kWT_LICENSE_KEY`の値を、実際に取得した正しいアクセスキーにしてください。
 
-- MyWikitudeAppForiOS\Frameworks\WikitudeSDK.framework\WikitudeSDK
+- /MyWikitudeAppForiOS/Frameworks/WikitudeSDK.framework/WikitudeSDK
 
 WikitudeSDKファイルは100Mbytesを超えているため、GitHubにアップロードできませんでした。ダウンロードしたWikitude SDKから入手してください。できればFrameworks配下すべてを置き換えてください。
 
