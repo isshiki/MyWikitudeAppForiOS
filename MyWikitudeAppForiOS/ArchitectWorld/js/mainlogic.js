@@ -158,14 +158,14 @@ var World = {
 		World.loadPoisFromJsonData(poiData);
 	},
 	
-	// 表示されているARオブジェクトの距離表示を更新します。ただし、POIデータに
+	// 表示されているARオブジェクトの距離表示を更新します。
 	updateDistanceValues: function (centerPointLatitude, centerPointLongitude, centerPointAltitude, centerPointAccuracy) {
 		
 		for (var i = 0; i < World.markerList.length; i++) {
 			
 			var distance = World.getDistance(myJsonData[i].latitude, centerPointLatitude, myJsonData[i].longitude, centerPointLongitude);
 			if (distance > 500.0) {
-				// 既存のマーカーの中から0.5km（＝500m）以上先のPOIデータが出てきた場合は、全部をリロードし直します。
+				// 既存のマーカーの中から0.5km（＝500m）以上離れたPOIデータが出てきた場合は、全部をリロードし直します。
 				World.requestDataFromLocal(centerPointLatitude, centerPointLongitude, centerPointAltitude, centerPointAccuracy);
 				return;
 			}
