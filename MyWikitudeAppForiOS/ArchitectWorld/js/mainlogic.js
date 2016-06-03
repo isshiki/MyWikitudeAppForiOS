@@ -22,21 +22,10 @@ var World = {
 		AR.context.destroyAll();
 		
 		// マーカーのアセットをイメージリソースとしてロードします。
-		//if (World.markerDrawable_idle === null)
-			World.markerDrawable_idle = new AR.ImageResource("assets/marker_idle.png");
-		//if (World.markerDrawable_selected === null)
-			World.markerDrawable_selected = new AR.ImageResource("assets/marker_selected.png");
+		World.markerDrawable_idle = new AR.ImageResource("assets/marker_idle.png");
+		World.markerDrawable_selected = new AR.ImageResource("assets/marker_selected.png");
 		
-		/*
 		// 見えるマーカーのリストを空にします。
-		var markerCount = World.markerList.length;
-		if (markerCount > 0) {
-			for (var i = 0; i < markerCount; i++) {
-				World.markerList[i].markerObject.enabled = false;
-				World.markerList[i].markerObject = null;
-			}
-		}*/
-		//World.markerList = null;
 		World.markerList = [];
 
 		// 全てのPOI情報をループしながら、1つのPOIごとにAR.GeoObject（＝マーカー）を作成します。
@@ -54,14 +43,6 @@ var World = {
 			// 1つ1つのマーカーが含まれる配列をWorldオブジェクトに保持させます。
 			World.markerList.push(new Marker(singlePoi));
 		}
-		var markerCount = World.markerList.length;
-		if (markerCount > 0) {
-			for (var i = 0; i < markerCount; i++) {
-				World.markerList[i].markerObject.enabled = true;
-			}
-		}
-		
-		World.updateStatusMessage(currentPlaceNr + 'カ所、ロードされました');
 	},
 
 	// 下部中央付近にあるフッターに、警告時＝［△］／通常時［i］の小さなボタンを表示し、そのボタンクリック時にポップアップする状態メッセージを更新します。
@@ -97,7 +78,7 @@ var World = {
 			World.updateDistanceValues(lat, lon, alt, acc);
 		}
 		
-		// テスト表示用
+		// テスト表示用（［i］ボタンをタップすると表示される状態メッセージをセットします）。
 		World.updateStatusMessage(World.markerList.length + "カ所、緯度・経度：" + lat + ", " + lon);
 		//alert("緯度・経度：" + lat + ", " + lon);
 
@@ -130,7 +111,7 @@ var World = {
 	// 指定された地点における全てのPOIデータをロードします。
 	requestDataFromLocal: function (centerPointLatitude, centerPointLongitude, centerPointAltitude, centerPointAccuracy) {
 
-		// 念のためValidate
+		// 念のためValidate（値検証）しています。
 		if ("number" !== typeof centerPointLatitude || centerPointLatitude < -90) centerPointLatitude = -90;
 		if ("number" !== typeof centerPointLatitude || centerPointLatitude > 90) centerPointLatitude = 90;
 		if ("number" !== typeof centerPointLongitude || centerPointLongitude < -180) centerPointLongitude = -180;
