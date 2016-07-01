@@ -144,14 +144,14 @@ var World = {
 		
 		for (var i = 0; i < World.markerList.length; i++) {
 			
-			var distance = World.getDistance(myJsonData[i].latitude, centerPointLatitude, myJsonData[i].longitude, centerPointLongitude);
+			var distance = World.getDistance(World.markerList[i].poiData.latitude, centerPointLatitude, World.markerList[i].poiData.longitude, centerPointLongitude);
 			if (distance > 500.0) {
 				// 既存のマーカーの中から0.5km（＝500m）以上離れたPOIデータが出てきた場合は、全部をリロードし直します。
 				World.requestDataFromLocal(centerPointLatitude, centerPointLongitude, centerPointAltitude, centerPointAccuracy);
 				return;
 			}
 			var distanceString = (distance > 999) ? ((distance / 1000).toFixed(2) + " km") : (Math.round(distance) + " m");
-			World.markerList[i].distance = distanceString;
+			World.markerList[i].distanceLabel.text = distanceString;
 		}
 	},
 
