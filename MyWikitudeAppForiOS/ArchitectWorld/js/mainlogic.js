@@ -116,7 +116,6 @@ var World = {
 		if ("number" !== typeof centerPointLatitude || centerPointLatitude > 90) centerPointLatitude = 90;
 		if ("number" !== typeof centerPointLongitude || centerPointLongitude < -180) centerPointLongitude = -180;
 		if ("number" !== typeof centerPointLongitude || centerPointLongitude > 180) centerPointLongitude = 180;
-		//if ("number" !== typeof centerPointAltitude || centerPointAccuracy <= 0) centerPointAccuracy = 0;
 		
 		var poiData = [];
 
@@ -151,7 +150,7 @@ var World = {
 				return;
 			}
 			var distanceString = (distance > 999) ? ((distance / 1000).toFixed(2) + " km") : (Math.round(distance) + " m");
-			World.markerList[i].distanceLabel.text = distanceString;
+			World.markerList[i].distanceLabel.text = World.markerList[i].poiData.distance = distanceString;  // ラベルとデータの両方を変更
 		}
 	},
 
